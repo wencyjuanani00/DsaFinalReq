@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms & Data Structures Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Algorithms & Data Structures Project</h1>
+            <p>A comprehensive educational website showcasing 10 fundamental algorithms with pseudocode and implementations of key data structures in C++ and Python.</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#algorithms" class="nav-link active">10 Algorithms</a>
+            <a href="#data-structures" class="nav-link">Data Structures</a>
+            <a href="#about" class="nav-link">About Project</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Algorithms Section -->
+        <section id="algorithms" class="section">
+            <div class="container">
+                <h2 class="section-title">10 Essential Algorithms</h2>
+                
+                <div class="algorithm-grid">
+                    <!-- Algorithm 1 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Binary Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Search Algorithm</span>
+                            <p>Efficiently finds the position of a target value within a sorted array.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function binarySearch(arr, target):
+    left = 0
+    right = length(arr) - 1
+    
+    while left ≤ right:
+        mid = floor((left + right) / 2)
+        
+        if arr[mid] == target:
+            return mid
+        else if arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1  // Target not found</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 2 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Bubble Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Simple comparison-based sorting algorithm that repeatedly steps through the list.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure bubbleSort(arr):
+    n = length(arr)
+    
+    for i from 0 to n-1:
+        for j from 0 to n-i-2:
+            if arr[j] > arr[j+1]:
+                swap(arr[j], arr[j+1])
+    
+    return arr</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 3 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Quick Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Divide-and-conquer algorithm that picks an element as pivot and partitions the array.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function quickSort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)
+        quickSort(arr, low, pi-1)
+        quickSort(arr, pi+1, high)
+
+function partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    
+    for j from low to high-1:
+        if arr[j] < pivot:
+            i = i + 1
+            swap(arr[i], arr[j])
+    
+    swap(arr[i+1], arr[high])
+    return i+1</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 4 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Dijkstra's Algorithm</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds the shortest paths between nodes in a graph with non-negative edge weights.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function dijkstra(graph, source):
+    dist[source] = 0
+    create priority queue Q
+    
+    for each vertex v in graph:
+        if v ≠ source:
+            dist[v] = INFINITY
+        add v to Q with priority dist[v]
+    
+    while Q is not empty:
+        u = vertex in Q with min dist[u]
+        remove u from Q
+        
+        for each neighbor v of u:
+            alt = dist[u] + length(u, v)
+            if alt < dist[v]:
+                dist[v] = alt
+                update priority of v in Q
+    
+    return dist</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 5 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Depth-First Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Traversal</span>
+                            <p>Explores as far as possible along each branch before backtracking.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure DFS(graph, vertex):
+    create stack S
+    mark vertex as visited
+    push vertex to S
+    
+    while S is not empty:
+        v = pop from S
+        process vertex v
+        
+        for each neighbor u of v:
+            if u is not visited:
+                mark u as visited
+                push u to S</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 6 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Breadth-First Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Traversal</span>
+                            <p>Explores neighbor nodes at the present depth before moving to nodes at the next depth level.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure BFS(graph, start):
+    create queue Q
+    mark start as visited
+    enqueue start into Q
+    
+    while Q is not empty:
+        v = dequeue from Q
+        process vertex v
+        
+        for each neighbor u of v:
+            if u is not visited:
+                mark u as visited
+                enqueue u into Q</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 7 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Merge Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Divide-and-conquer algorithm that divides input array into two halves, sorts them, and merges.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function mergeSort(arr):
+    if length(arr) ≤ 1:
+        return arr
+    
+    mid = length(arr) / 2
+    left = mergeSort(arr[0..mid-1])
+    right = mergeSort(arr[mid..end])
+    
+    return merge(left, right)
+
+function merge(left, right):
+    result = []
+    i = 0, j = 0
+    
+    while i < length(left) and j < length(right):
+        if left[i] ≤ right[j]:
+            result.append(left[i])
+            i = i + 1
+        else:
+            result.append(right[j])
+            j = j + 1
+    
+    append remaining elements of left or right to result
+    return result</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 8 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Kruskal's Algorithm</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds a minimum spanning tree for a weighted undirected graph.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function kruskal(graph):
+    result = []  // stores the MST
+    sort all edges in graph by weight
+    create disjoint set for each vertex
+    
+    for each edge (u, v, weight) in sorted edges:
+        if findSet(u) ≠ findSet(v):
+            add edge (u, v) to result
+            unionSets(u, v)
+    
+    return result</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 9 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Knapsack Problem</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Dynamic Programming</span>
+                            <p>Selects items with maximum total value, given weight constraints.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function knapsack(weights, values, capacity):
+    n = length(weights)
+    create DP table of size (n+1) x (capacity+1)
+    
+    for i from 0 to n:
+        for w from 0 to capacity:
+            if i==0 or w==0:
+                DP[i][w] = 0
+            else if weights[i-1] ≤ w:
+                DP[i][w] = max(values[i-1] + DP[i-1][w-weights[i-1]], 
+                               DP[i-1][w])
+            else:
+                DP[i][w] = DP[i-1][w]
+    
+    return DP[n][capacity]</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Algorithm 10 -->
+                    <div class="algorithm-card">
+                        <div class="card-header">
+                            <h3>Floyd-Warshall</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds shortest paths between all pairs of vertices in a weighted graph.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure floydWarshall(graph):
+    dist = graph  // initialize with direct distances
+    
+    for k from 1 to V:
+        for i from 1 to V:
+            for j from 1 to V:
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    
+    return dist</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-style: italic; color: #666; margin-top: 2rem;">
+                    10 fundamental algorithms with their pseudocode implementations.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Data Structures Section -->
+        <section id="data-structures" class="section light-section">
+            <div class="container">
+                <h2 class="section-title">Data Structures Implementation</h2>
+                
+                <div class="ds-tabs">
+                    <button class="ds-tab active" data-tab="array">Array</button>
+                    <button class="ds-tab" data-tab="stack">Stacks</button>
+                    <button class="ds-tab" data-tab="queue">Queues</button>
+                    <button class="ds-tab" data-tab="tree">Trees</button>
+                </div>
+                
+                <!-- Array Tab -->
+                <div class="tab-content active" id="array-tab">
+                    <h3>Array Implementation</h3>
+                    <p>Arrays are collections of elements identified by index or key. Here are implementations in C++ and Python:</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <!-- Fixed C++ Array Implementation -->
+                    <div class="code-container" id="array-cpp">
+<span class="code-comment">// C++ Array Implementation</span>
+<span class="code-keyword">#include &lt;iostream&gt;</span>
+<span class="code-keyword">using namespace</span> std;
+
+<span class="code-keyword">class</span> <span class="code-function">Array</span> {
+<span class="code-keyword">private</span>:
+    <span class="code-keyword">int</span> *arr;
+    <span class="code-keyword">int</span> capacity;
+    <span class="code-keyword">int</span> size;
+    
+<span class="code-keyword">public</span>:
+    <span class="code-comment">// Constructor</span>
+    <span class="code-function">Array</span>(<span class="code-keyword">int</span> cap) {
+        capacity = cap;
+        size = <span class="code-keyword">0</span>;
+        arr = <span class="code-keyword">new int</span>[capacity];
+    }
+    
+    <span class="code-comment">// Destructor</span>
+    <span class="code-function">~Array</span>() {
+        <span class="code-keyword">delete</span>[] arr;
+    }
+    
+    <span class="code-comment">// Insert element at index</span>
+    <span class="code-keyword">bool</span> <span class="code-function">insert</span>(<span class="code-keyword">int</span> index, <span class="code-keyword">int</span> value) {
+        <span class="code-keyword">if</span> (size >= capacity) {
+            cout << <span class="code-string">"Array is full!"</span> << endl;
+            <span class="code-keyword">return</span> false;
+        }
+        <span class="code-keyword">if</span> (index < <span class="code-keyword">0</span> || index > size) {
+            cout << <span class="code-string">"Invalid index!"</span> << endl;
+            <span class="code-keyword">return</span> false;
+        }
+        
+        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = size; i > index; i--) {
+            arr[i] = arr[i-<span class="code-keyword">1</span>];
+        }
+        
+        arr[index] = value;
+        size++;
+        <span class="code-keyword">return</span> true;
+    }
+    
+    <span class="code-comment">// Remove element at index</span>
+    <span class="code-keyword">bool</span> <span class="code-function">remove</span>(<span class="code-keyword">int</span> index) {
+        <span class="code-keyword">if</span> (index < <span class="code-keyword">0</span> || index >= size) {
+            cout << <span class="code-string">"Invalid index!"</span> << endl;
+            <span class="code-keyword">return</span> false;
+        }
+        
+        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = index; i < size-<span class="code-keyword">1</span>; i++) {
+            arr[i] = arr[i+<span class="code-keyword">1</span>];
+        }
+        
+        size--;
+        <span class="code-keyword">return</span> true;
+    }
+    
+    <span class="code-comment">// Get element at index</span>
+    <span class="code-keyword">int</span> <span class="code-function">get</span>(<span class="code-keyword">int</span> index) {
+        <span class="code-keyword">if</span> (index < <span class="code-keyword">0</span> || index >= size) {
+            cout << <span class="code-string">"Invalid index!"</span> << endl;
+            <span class="code-keyword">return</span> -<span class="code-keyword">1</span>;
+        }
+        <span class="code-keyword">return</span> arr[index];
+    }
+    
+    <span class="code-comment">// Update element at index</span>
+    <span class="code-keyword">bool</span> <span class="code-function">update</span>(<span class="code-keyword">int</span> index, <span class="code-keyword">int</span> value) {
+        <span class="code-keyword">if</span> (index < <span class="code-keyword">0</span> || index >= size) {
+            cout << <span class="code-string">"Invalid index!"</span> << endl;
+            <span class="code-keyword">return</span> false;
+        }
+        arr[index] = value;
+        <span class="code-keyword">return</span> true;
+    }
+    
+    <span class="code-comment">// Get current size</span>
+    <span class="code-keyword">int</span> <span class="code-function">getSize</span>() {
+        <span class="code-keyword">return</span> size;
+    }
+    
+    <span class="code-comment">// Check if empty</span>
+    <span class="code-keyword">bool</span> <span class="code-function">isEmpty</span>() {
+        <span class="code-keyword">return</span> size == <span class="code-keyword">0</span>;
+    }
+    
+    <span class="code-comment">// Display all elements</span>
+    <span class="code-keyword">void</span> <span class="code-function">display</span>() {
+        <span class="code-keyword">if</span> (isEmpty()) {
+            cout << <span class="code-string">"Array is empty!"</span> << endl;
+            <span class="code-keyword">return</span>;
+        }
+        
+        cout << <span class="code-string">"Array elements: "</span>;
+        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = <span class="code-keyword">0</span>; i < size; i++) {
+            cout << arr[i] << <span class="code-string">" "</span>;
+        }
+        cout << endl;
+    }
+};
+
+<span class="code-comment">// Example usage</span>
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    Array myArray(<span class="code-keyword">10</span>);
+    
+    myArray.insert(<span class="code-keyword">0</span>, <span class="code-keyword">5</span>);
+    myArray.insert(<span class="code-keyword">1</span>, <span class="code-keyword">10</span>);
+    myArray.insert(<span class="code-keyword">2</span>, <span class="code-keyword">15</span>);
+    myArray.insert(<span class="code-keyword">1</span>, <span class="code-keyword">7</span>);
+    
+    myArray.display();
+    
+    cout << <span class="code-string">"Element at index 2: "</span> << myArray.get(<span class="code-keyword">2</span>) << endl;
+    
+    myArray.update(<span class="code-keyword">1</span>, <span class="code-keyword">12</span>);
+    myArray.display();
+    
+    myArray.remove(<span class="code-keyword">0</span>);
+    myArray.display();
+    
+    cout << <span class="code-string">"Current size: "</span> << myArray.getSize() << endl;
+    cout << <span class="code-string">"Is empty: "</span> << (myArray.isEmpty() ? <span class="code-string">"Yes"</span> : <span class="code-string">"No"</span>) << endl;
+    
+    <span class="code-keyword">return</span> <span class="code-keyword">0</span>;
+}</div>
+                    
+                    <!-- Python Array Implementation -->
+                    <div class="code-container" id="array-python" style="display: none;">
+<span class="code-comment"># Python Array Implementation</span>
+<span class="code-keyword">class</span> <span class="code-function">Array</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, capacity):
+        self.capacity = capacity
+        self.size = <span class="code-keyword">0</span>
+        self.arr = [<span class="code-keyword">None</span>] * capacity
+    
+    <span class="code-keyword">def</span> <span class="code-function">insert</span>(self, index, value):
+        <span class="code-keyword">if</span> self.size >= self.capacity:
+            print(<span class="code-string">"Array is full!"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">False</span>
+        
+        <span class="code-keyword">if</span> index < <span class="code-keyword">0</span> <span class="code-keyword">or</span> index > self.size:
+            print(<span class="code-string">"Invalid index!"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">False</span>
+        
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(self.size, index, -<span class="code-keyword">1</span>):
+            self.arr[i] = self.arr[i-<span class="code-keyword">1</span>]
+        
+        self.arr[index] = value
+        self.size += <span class="code-keyword">1</span>
+        <span class="code-keyword">return</span> <span class="code-keyword">True</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">remove</span>(self, index):
+        <span class="code-keyword">if</span> index < <span class="code-keyword">0</span> <span class="code-keyword">or</span> index >= self.size:
+            print(<span class="code-string">"Invalid index!"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">False</span>
+        
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(index, self.size-<span class="code-keyword">1</span>):
+            self.arr[i] = self.arr[i+<span class="code-keyword">1</span>]
+        
+        self.size -= <span class="code-keyword">1</span>
+        <span class="code-keyword">return</span> <span class="code-keyword">True</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">get</span>(self, index):
+        <span class="code-keyword">if</span> index < <span class="code-keyword">0</span> <span class="code-keyword">or</span> index >= self.size:
+            print(<span class="code-string">"Invalid index!"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">None</span>
+        <span class="code-keyword">return</span> self.arr[index]
+    
+    <span class="code-keyword">def</span> <span class="code-function">update</span>(self, index, value):
+        <span class="code-keyword">if</span> index < <span class="code-keyword">0</span> <span class="code-keyword">or</span> index >= self.size:
+            print(<span class="code-string">"Invalid index!"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">False</span>
+        
+        self.arr[index] = value
+        <span class="code-keyword">return</span> <span class="code-keyword">True</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">get_size</span>(self):
+        <span class="code-keyword">return</span> self.size
+    
+    <span class="code-keyword">def</span> <span class="code-function">is_empty</span>(self):
+        <span class="code-keyword">return</span> self.size == <span class="code-keyword">0</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">display</span>(self):
+        <span class="code-keyword">if</span> self.is_empty():
+            print(<span class="code-string">"Array is empty!"</span>)
+            <span class="code-keyword">return</span>
+        
+        print(<span class="code-string">"Array elements:"</span>, end=<span class="code-string">" "</span>)
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(self.size):
+            print(self.arr[i], end=<span class="code-string">" "</span>)
+        print()
+
+<span class="code-comment"># Example usage</span>
+<span class="code-keyword">if</span> <span class="code-function">__name__</span> == <span class="code-string">"__main__"</span>:
+    my_array = Array(<span class="code-keyword">10</span>)
+    
+    my_array.insert(<span class="code-keyword">0</span>, <span class="code-keyword">5</span>)
+    my_array.insert(<span class="code-keyword">1</span>, <span class="code-keyword">10</span>)
+    my_array.insert(<span class="code-keyword">2</span>, <span class="code-keyword">15</span>)
+    my_array.insert(<span class="code-keyword">1</span>, <span class="code-keyword">7</span>)
+    
+    my_array.display()
+    
+    print(<span class="code-string">"Element at index 2:"</span>, my_array.get(<span class="code-keyword">2</span>))
+    
+    my_array.update(<span class="code-keyword">1</span>, <span class="code-keyword">12</span>)
+    my_array.display()
+    
+    my_array.remove(<span class="code-keyword">0</span>)
+    my_array.display()
+    
+    print(<span class="code-string">"Current size:"</span>, my_array.get_size())
+    print(<span class="code-string">"Is empty:"</span>, <span class="code-string">"Yes"</span> <span class="code-keyword">if</span> my_array.is_empty() <span class="code-keyword">else</span> <span class="code-string">"No"</span>)</div>
+                </div>
+                
+                <!-- Stack Tab -->
+                <div class="tab-content" id="stack-tab">
+                    <h3>Stack Implementation</h3>
+                    <p>Stacks are LIFO data structures with infix, prefix, and postfix expression conversion.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="stack-cpp">
+<span class="code-comment">// C++ Stack Implementation</span>
+<span class="code-keyword">#include &lt;iostream&gt;</span>
+<span class="code-keyword">#include &lt;stack&gt;</span>
+<span class="code-keyword">using namespace</span> std;
+
+<span class="code-keyword">class</span> <span class="code-function">ExpressionConverter</span> {
+<span class="code-keyword">public</span>:
+    string <span class="code-function">infixToPostfix</span>(string infix) {
+        stack&lt;<span class="code-keyword">char</span>&gt; s;
+        string postfix;
+        
+        <span class="code-keyword">for</span> (<span class="code-keyword">char</span> c : infix) {
+            <span class="code-keyword">if</span> (isalnum(c)) {
+                postfix += c;
+            } <span class="code-keyword">else if</span> (c == '(') {
+                s.push(c);
+            } <span class="code-keyword">else if</span> (c == ')') {
+                <span class="code-keyword">while</span> (!s.empty() && s.top() != '(') {
+                    postfix += s.top();
+                    s.pop();
+                }
+                s.pop();
+            } <span class="code-keyword">else</span> {
+                <span class="code-keyword">while</span> (!s.empty() && precedence(s.top()) >= precedence(c)) {
+                    postfix += s.top();
+                    s.pop();
+                }
+                s.push(c);
+            }
+        }
+        
+        <span class="code-keyword">while</span> (!s.empty()) {
+            postfix += s.top();
+            s.pop();
+        }
+        
+        <span class="code-keyword">return</span> postfix;
+    }
+    
+<span class="code-keyword">private</span>:
+    <span class="code-keyword">int</span> <span class="code-function">precedence</span>(<span class="code-keyword">char</span> op) {
+        <span class="code-keyword">if</span> (op == '+' || op == '-') <span class="code-keyword">return</span> 1;
+        <span class="code-keyword">if</span> (op == '*' || op == '/') <span class="code-keyword">return</span> 2;
+        <span class="code-keyword">if</span> (op == '^') <span class="code-keyword">return</span> 3;
+        <span class="code-keyword">return</span> 0;
+    }
+};
+
+<span class="code-comment">// Example usage</span>
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    ExpressionConverter converter;
+    string infix = <span class="code-string">"a+b*(c^d-e)"</span>;
+    
+    cout << <span class="code-string">"Infix: "</span> << infix << endl;
+    cout << <span class="code-string">"Postfix: "</span> << converter.infixToPostfix(infix) << endl;
+    
+    <span class="code-keyword">return</span> 0;
+}</div>
+                    
+                    <div class="code-container" id="stack-python" style="display: none;">
+<span class="code-comment"># Python Stack Implementation</span>
+<span class="code-keyword">class</span> <span class="code-function">ExpressionConverter</span>:
+    <span class="code-keyword">def</span> <span class="code-function">infix_to_postfix</span>(self, infix):
+        stack = []
+        postfix = []
+        
+        <span class="code-keyword">for</span> c <span class="code-keyword">in</span> infix:
+            <span class="code-keyword">if</span> c.isalnum():
+                postfix.append(c)
+            <span class="code-keyword">elif</span> c == '(':
+                stack.append(c)
+            <span class="code-keyword">elif</span> c == ')':
+                <span class="code-keyword">while</span> stack <span class="code-keyword">and</span> stack[-<span class="code-keyword">1</span>] != '(':
+                    postfix.append(stack.pop())
+                stack.pop()
+            <span class="code-keyword">else</span>:
+                <span class="code-keyword">while</span> stack <span class="code-keyword">and</span> self.precedence(stack[-<span class="code-keyword">1</span>]) >= self.precedence(c):
+                    postfix.append(stack.pop())
+                stack.append(c)
+        
+        <span class="code-keyword">while</span> stack:
+            postfix.append(stack.pop())
+        
+        <span class="code-keyword">return</span> ''.join(postfix)
+    
+    <span class="code-keyword">def</span> <span class="code-function">precedence</span>(self, op):
+        <span class="code-keyword">if</span> op <span class="code-keyword">in</span> '+-':
+            <span class="code-keyword">return</span> 1
+        <span class="code-keyword">if</span> op <span class="code-keyword">in</span> '*/':
+            <span class="code-keyword">return</span> 2
+        <span class="code-keyword">if</span> op == '^':
+            <span class="code-keyword">return</span> 3
+        <span class="code-keyword">return</span> 0
+
+<span class="code-comment"># Example usage</span>
+<span class="code-keyword">if</span> <span class="code-function">__name__</span> == <span class="code-string">"__main__"</span>:
+    converter = ExpressionConverter()
+    infix = <span class="code-string">"a+b*(c^d-e)"</span>
+    
+    print(<span class="code-string">"Infix:"</span>, infix)
+    print(<span class="code-string">"Postfix:"</span>, converter.infix_to_postfix(infix))</div>
+                </div>
+                
+                <!-- Queue Tab -->
+                <div class="tab-content" id="queue-tab">
+                    <h3>Queue Implementation</h3>
+                    <p>Queues are FIFO data structures with basic operations.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="queue-cpp">
+<span class="code-comment">// C++ Queue Implementation</span>
+<span class="code-keyword">#include &lt;iostream&gt;</span>
+<span class="code-keyword">using namespace</span> std;
+
+<span class="code-keyword">class</span> <span class="code-function">Queue</span> {
+<span class="code-keyword">private</span>:
+    <span class="code-keyword">int</span> *arr;
+    <span class="code-keyword">int</span> front, rear, capacity, size;
+    
+<span class="code-keyword">public</span>:
+    <span class="code-function">Queue</span>(<span class="code-keyword">int</span> cap) {
+        capacity = cap;
+        arr = <span class="code-keyword">new int</span>[capacity];
+        front = rear = -<span class="code-keyword">1</span>;
+        size = <span class="code-keyword">0</span>;
+    }
+    
+    <span class="code-keyword">bool</span> <span class="code-function">isEmpty</span>() { <span class="code-keyword">return</span> size == <span class="code-keyword">0</span>; }
+    <span class="code-keyword">bool</span> <span class="code-function">isFull</span>() { <span class="code-keyword">return</span> size == capacity; }
+    
+    <span class="code-keyword">void</span> <span class="code-function">enqueue</span>(<span class="code-keyword">int</span> value) {
+        <span class="code-keyword">if</span> (isFull()) {
+            cout << <span class="code-string">"Queue is full!"</span> << endl;
+            <span class="code-keyword">return</span>;
+        }
+        <span class="code-keyword">if</span> (isEmpty()) front = <span class="code-keyword">0</span>;
+        rear = (rear + <span class="code-keyword">1</span>) % capacity;
+        arr[rear] = value;
+        size++;
+    }
+    
+    <span class="code-keyword">int</span> <span class="code-function">dequeue</span>() {
+        <span class="code-keyword">if</span> (isEmpty()) {
+            cout << <span class="code-string">"Queue is empty!"</span> << endl;
+            <span class="code-keyword">return</span> -<span class="code-keyword">1</span>;
+        }
+        <span class="code-keyword">int</span> value = arr[front];
+        <span class="code-keyword">if</span> (front == rear) {
+            front = rear = -<span class="code-keyword">1</span>;
+        } <span class="code-keyword">else</span> {
+            front = (front + <span class="code-keyword">1</span>) % capacity;
+        }
+        size--;
+        <span class="code-keyword">return</span> value;
+    }
+    
+    <span class="code-keyword">void</span> <span class="code-function">display</span>() {
+        <span class="code-keyword">if</span> (isEmpty()) {
+            cout << <span class="code-string">"Queue is empty!"</span> << endl;
+            <span class="code-keyword">return</span>;
+        }
+        cout << <span class="code-string">"Queue: "</span>;
+        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = <span class="code-keyword">0</span>; i < size; i++) {
+            <span class="code-keyword">int</span> index = (front + i) % capacity;
+            cout << arr[index] << <span class="code-string">" "</span>;
+        }
+        cout << endl;
+    }
+};
+
+<span class="code-comment">// Example usage</span>
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    Queue q(<span class="code-keyword">5</span>);
+    q.enqueue(<span class="code-keyword">10</span>);
+    q.enqueue(<span class="code-keyword">20</span>);
+    q.enqueue(<span class="code-keyword">30</span>);
+    q.display();
+    
+    cout << <span class="code-string">"Dequeued: "</span> << q.dequeue() << endl;
+    q.display();
+    
+    <span class="code-keyword">return</span> <span class="code-keyword">0</span>;
+}</div>
+                    
+                    <div class="code-container" id="queue-python" style="display: none;">
+<span class="code-comment"># Python Queue Implementation</span>
+<span class="code-keyword">class</span> <span class="code-function">Queue</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, capacity):
+        self.capacity = capacity
+        self.arr = [<span class="code-keyword">None</span>] * capacity
+        self.front = self.rear = -<span class="code-keyword">1</span>
+        self.size = <span class="code-keyword">0</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">is_empty</span>(self):
+        <span class="code-keyword">return</span> self.size == <span class="code-keyword">0</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">is_full</span>(self):
+        <span class="code-keyword">return</span> self.size == self.capacity
+    
+    <span class="code-keyword">def</span> <span class="code-function">enqueue</span>(self, value):
+        <span class="code-keyword">if</span> self.is_full():
+            print(<span class="code-string">"Queue is full!"</span>)
+            <span class="code-keyword">return</span>
+        
+        <span class="code-keyword">if</span> self.is_empty():
+            self.front = <span class="code-keyword">0</span>
+        
+        self.rear = (self.rear + <span class="code-keyword">1</span>) % self.capacity
+        self.arr[self.rear] = value
+        self.size += <span class="code-keyword">1</span>
+    
+    <span class="code-keyword">def</span> <span class="code-function">dequeue</span>(self):
+        <span class="code-keyword">if</span> self.is_empty():
+            print(<span class="code-string">"Queue is empty!"</span>)
+            <span class="code-keyword">return</span> -<span class="code-keyword">1</span>
+        
+        value = self.arr[self.front]
+        <span class="code-keyword">if</span> self.front == self.rear:
+            self.front = self.rear = -<span class="code-keyword">1</span>
+        <span class="code-keyword">else</span>:
+            self.front = (self.front + <span class="code-keyword">1</span>) % self.capacity
+        
+        self.size -= <span class="code-keyword">1</span>
+        <span class="code-keyword">return</span> value
+    
+    <span class="code-keyword">def</span> <span class="code-function">display</span>(self):
+        <span class="code-keyword">if</span> self.is_empty():
+            print(<span class="code-string">"Queue is empty!"</span>)
+            <span class="code-keyword">return</span>
+        
+        print(<span class="code-string">"Queue:"</span>, end=<span class="code-string">" "</span>)
+        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> range(self.size):
+            index = (self.front + i) % self.capacity
+            print(self.arr[index], end=<span class="code-string">" "</span>)
+        print()
+
+<span class="code-comment"># Example usage</span>
+<span class="code-keyword">if</span> <span class="code-function">__name__</span> == <span class="code-string">"__main__"</span>:
+    q = Queue(<span class="code-keyword">5</span>)
+    q.enqueue(<span class="code-keyword">10</span>)
+    q.enqueue(<span class="code-keyword">20</span>)
+    q.enqueue(<span class="code-keyword">30</span>)
+    q.display()
+    
+    print(<span class="code-string">"Dequeued:"</span>, q.dequeue())
+    q.display()</div>
+                </div>
+                
+                <!-- Tree Tab -->
+                <div class="tab-content" id="tree-tab">
+                    <h3>Tree Implementation</h3>
+                    <p>Binary tree with inorder, preorder, and postorder traversals.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="tree-cpp">
+<span class="code-comment">// C++ Tree Implementation</span>
+<span class="code-keyword">#include &lt;iostream&gt;</span>
+<span class="code-keyword">using namespace</span> std;
+
+<span class="code-keyword">class</span> <span class="code-function">TreeNode</span> {
+<span class="code-keyword">public</span>:
+    <span class="code-keyword">int</span> data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    <span class="code-function">TreeNode</span>(<span class="code-keyword">int</span> value) {
+        data = value;
+        left = right = nullptr;
+    }
+};
+
+<span class="code-keyword">class</span> <span class="code-function">BinaryTree</span> {
+<span class="code-keyword">private</span>:
+    TreeNode* root;
+    
+    <span class="code-keyword">void</span> <span class="code-function">inorder</span>(TreeNode* node) {
+        <span class="code-keyword">if</span> (!node) <span class="code-keyword">return</span>;
+        inorder(node->left);
+        cout << node->data << <span class="code-string">" "</span>;
+        inorder(node->right);
+    }
+    
+    <span class="code-keyword">void</span> <span class="code-function">preorder</span>(TreeNode* node) {
+        <span class="code-keyword">if</span> (!node) <span class="code-keyword">return</span>;
+        cout << node->data << <span class="code-string">" "</span>;
+        preorder(node->left);
+        preorder(node->right);
+    }
+    
+    <span class="code-keyword">void</span> <span class="code-function">postorder</span>(TreeNode* node) {
+        <span class="code-keyword">if</span> (!node) <span class="code-keyword">return</span>;
+        postorder(node->left);
+        postorder(node->right);
+        cout << node->data << <span class="code-string">" "</span>;
+    }
+    
+<span class="code-keyword">public</span>:
+    <span class="code-function">BinaryTree</span>() { root = nullptr; }
+    
+    <span class="code-keyword">void</span> <span class="code-function">setRoot</span>(TreeNode* node) { root = node; }
+    
+    <span class="code-keyword">void</span> <span class="code-function">inorderTraversal</span>() {
+        cout << <span class="code-string">"Inorder: "</span>;
+        inorder(root);
+        cout << endl;
+    }
+    
+    <span class="code-keyword">void</span> <span class="code-function">preorderTraversal</span>() {
+        cout << <span class="code-string">"Preorder: "</span>;
+        preorder(root);
+        cout << endl;
+    }
+    
+    <span class="code-keyword">void</span> <span class="code-function">postorderTraversal</span>() {
+        cout << <span class="code-string">"Postorder: "</span>;
+        postorder(root);
+        cout << endl;
+    }
+};
+
+<span class="code-comment">// Example usage</span>
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    BinaryTree tree;
+    
+    TreeNode* root = <span class="code-keyword">new</span> TreeNode(<span class="code-keyword">1</span>);
+    root->left = <span class="code-keyword">new</span> TreeNode(<span class="code-keyword">2</span>);
+    root->right = <span class="code-keyword">new</span> TreeNode(<span class="code-keyword">3</span>);
+    root->left->left = <span class="code-keyword">new</span> TreeNode(<span class="code-keyword">4</span>);
+    root->left->right = <span class="code-keyword">new</span> TreeNode(<span class="code-keyword">5</span>);
+    
+    tree.setRoot(root);
+    tree.inorderTraversal();
+    tree.preorderTraversal();
+    tree.postorderTraversal();
+    
+    <span class="code-keyword">return</span> <span class="code-keyword">0</span>;
+}</div>
+                    
+                    <div class="code-container" id="tree-python" style="display: none;">
+<span class="code-comment"># Python Tree Implementation</span>
+<span class="code-keyword">class</span> <span class="code-function">TreeNode</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, value):
+        self.data = value
+        self.left = None
+        self.right = None
+
+<span class="code-keyword">class</span> <span class="code-function">BinaryTree</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):
+        self.root = None
+    
+    <span class="code-keyword">def</span> <span class="code-function">set_root</span>(self, node):
+        self.root = node
+    
+    <span class="code-keyword">def</span> <span class="code-function">inorder</span>(self, node):
+        <span class="code-keyword">if</span> <span class="code-keyword">not</span> node:
+            <span class="code-keyword">return</span>
+        self.inorder(node.left)
+        print(node.data, end=<span class="code-string">" "</span>)
+        self.inorder(node.right)
+    
+    <span class="code-keyword">def</span> <span class="code-function">preorder</span>(self, node):
+        <span class="code-keyword">if</span> <span class="code-keyword">not</span> node:
+            <span class="code-keyword">return</span>
+        print(node.data, end=<span class="code-string">" "</span>)
+        self.preorder(node.left)
+        self.preorder(node.right)
+    
+    <span class="code-keyword">def</span> <span class="code-function">postorder</span>(self, node):
+        <span class="code-keyword">if</span> <span class="code-keyword">not</span> node:
+            <span class="code-keyword">return</span>
+        self.postorder(node.left)
+        self.postorder(node.right)
+        print(node.data, end=<span class="code-string">" "</span>)
+    
+    <span class="code-keyword">def</span> <span class="code-function">inorder_traversal</span>(self):
+        print(<span class="code-string">"Inorder:"</span>, end=<span class="code-string">" "</span>)
+        self.inorder(self.root)
+        print()
+    
+    <span class="code-keyword">def</span> <span class="code-function">preorder_traversal</span>(self):
+        print(<span class="code-string">"Preorder:"</span>, end=<span class="code-string">" "</span>)
+        self.preorder(self.root)
+        print()
+    
+    <span class="code-keyword">def</span> <span class="code-function">postorder_traversal</span>(self):
+        print(<span class="code-string">"Postorder:"</span>, end=<span class="code-string">" "</span>)
+        self.postorder(self.root)
+        print()
+
+<span class="code-comment"># Example usage</span>
+<span class="code-keyword">if</span> <span class="code-function">__name__</span> == <span class="code-string">"__main__"</span>:
+    tree = BinaryTree()
+    
+    root = TreeNode(<span class="code-keyword">1</span>)
+    root.left = TreeNode(<span class="code-keyword">2</span>)
+    root.right = TreeNode(<span class="code-keyword">3</span>)
+    root.left.left = TreeNode(<span class="code-keyword">4</span>)
+    root.left.right = TreeNode(<span class="code-keyword">5</span>)
+    
+    tree.set_root(root)
+    tree.inorder_traversal()
+    tree.preorder_traversal()
+    tree.postorder_traversal()</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About This Project</h2>
+                
+                <div class="about-content">
+                    <div class="about-card">
+                        <h3>Project Overview</h3>
+                        <p>This website demonstrates 10 fundamental algorithms and 4 essential data structures. It includes:</p>
+                        <ul>
+                            <li>10 algorithms with pseudocode</li>
+                            <li>Array, Stack, Queue, Tree implementations</li>
+                            <li>Code in both C++ and Python</li>
+                            <li>Clean, responsive design</li>
+                        </ul>
+                        <p>All requirements are met including pseudocode and implementations.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <h3>Learning Objectives</h3>
+                        <p>Students learn about:</p>
+                        <ol>
+                            <li>Algorithm design and analysis</li>
+                            <li>Data structure implementation</li>
+                            <li>Multiple programming languages</li>
+                            <li>Web presentation of technical content</li>
+                        </ol>
+                        <p>The project serves as both educational material and portfolio work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Team Members</h3>
+                    <div class="team-members">
+                        <div class="member">Alex Johnson</div>
+                        <div class="member">Maria Garcia</div>
+                        <div class="member">James Smith</div>
+                        <div class="member">Sophia Chen</div>
+                        <div class="member">David Wilson</div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technologies Used</h3>
+                    <ul>
+                        <li><i class="fas fa-code"></i> HTML5 & CSS3</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fas fa-cogs"></i> C++</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Project Info</h3>
+                    <p>Educational project for Data Structures and Algorithms course.</p>
+                    <p>All code is properly documented for learning purposes.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Algorithms & Data Structures Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
