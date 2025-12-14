@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Algorithms | Algorithms & Data Structures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>All Algorithms</h1>
+            <p>10 fundamental algorithms with pseudocode</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="algorithms.html" class="nav-link active">All Algorithms</a>
+            <a href="data-structures.html" class="nav-link">Data Structures</a>
+            <a href="about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">10 Essential Algorithms</h2>
+                
+                <div class="algorithm-filter">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="search">Searching</button>
+                        <button class="filter-btn" data-filter="sort">Sorting</button>
+                        <button class="filter-btn" data-filter="graph">Graph</button>
+                        <button class="filter-btn" data-filter="dp">Dynamic Programming</button>
+                    </div>
+                </div>
+                
+                <div class="algorithm-grid">
+                    <div class="algorithm-card" id="binary-search" data-category="search">
+                        <div class="card-header">
+                            <h3>Binary Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Search Algorithm</span>
+                            <p>Efficiently finds the position of a target value within a sorted array.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function binarySearch(arr, target):
+    left = 0
+    right = length(arr) - 1
+    
+    while left ≤ right:
+        mid = floor((left + right) / 2)
+        
+        if arr[mid] == target:
+            return mid
+        else if arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="bubble-sort" data-category="sort">
+                        <div class="card-header">
+                            <h3>Bubble Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Simple comparison-based sorting algorithm.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure bubbleSort(arr):
+    n = length(arr)
+    
+    for i from 0 to n-1:
+        for j from 0 to n-i-2:
+            if arr[j] > arr[j+1]:
+                swap(arr[j], arr[j+1])
+    
+    return arr</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="quick-sort" data-category="sort">
+                        <div class="card-header">
+                            <h3>Quick Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Divide-and-conquer algorithm with pivot selection.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function quickSort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)
+        quickSort(arr, low, pi-1)
+        quickSort(arr, pi+1, high)
+
+function partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    
+    for j from low to high-1:
+        if arr[j] < pivot:
+            i = i + 1
+            swap(arr[i], arr[j])
+    
+    swap(arr[i+1], arr[high])
+    return i+1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="dijkstra" data-category="graph">
+                        <div class="card-header">
+                            <h3>Dijkstra's Algorithm</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds shortest paths in graphs with non-negative weights.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function dijkstra(graph, source):
+    dist[source] = 0
+    create priority queue Q
+    
+    for each vertex v in graph:
+        if v ≠ source:
+            dist[v] = INFINITY
+        add v to Q with priority dist[v]
+    
+    while Q is not empty:
+        u = vertex in Q with min dist[u]
+        remove u from Q
+        
+        for each neighbor v of u:
+            alt = dist[u] + length(u, v)
+            if alt < dist[v]:
+                dist[v] = alt
+                update priority of v in Q
+    
+    return dist</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="dfs" data-category="graph">
+                        <div class="card-header">
+                            <h3>Depth-First Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Traversal</span>
+                            <p>Explores as far as possible along each branch.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure DFS(graph, vertex):
+    create stack S
+    mark vertex as visited
+    push vertex to S
+    
+    while S is not empty:
+        v = pop from S
+        process vertex v
+        
+        for each neighbor u of v:
+            if u is not visited:
+                mark u as visited
+                push u to S</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="bfs" data-category="graph">
+                        <div class="card-header">
+                            <h3>Breadth-First Search</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Traversal</span>
+                            <p>Explores neighbor nodes level by level.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure BFS(graph, start):
+    create queue Q
+    mark start as visited
+    enqueue start into Q
+    
+    while Q is not empty:
+        v = dequeue from Q
+        process vertex v
+        
+        for each neighbor u of v:
+            if u is not visited:
+                mark u as visited
+                enqueue u into Q</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="merge-sort" data-category="sort">
+                        <div class="card-header">
+                            <h3>Merge Sort</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Sorting Algorithm</span>
+                            <p>Divide-and-conquer algorithm using merging.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function mergeSort(arr):
+    if length(arr) ≤ 1:
+        return arr
+    
+    mid = length(arr) / 2
+    left = mergeSort(arr[0..mid-1])
+    right = mergeSort(arr[mid..end])
+    
+    return merge(left, right)
+
+function merge(left, right):
+    result = []
+    i = 0, j = 0
+    
+    while i < length(left) and j < length(right):
+        if left[i] ≤ right[j]:
+            result.append(left[i])
+            i = i + 1
+        else:
+            result.append(right[j])
+            j = j + 1
+    
+    append remaining elements of left or right to result
+    return result</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="kruskal" data-category="graph">
+                        <div class="card-header">
+                            <h3>Kruskal's Algorithm</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds minimum spanning tree for weighted graphs.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function kruskal(graph):
+    result = []
+    sort all edges in graph by weight
+    create disjoint set for each vertex
+    
+    for each edge (u, v, weight) in sorted edges:
+        if findSet(u) ≠ findSet(v):
+            add edge (u, v) to result
+            unionSets(u, v)
+    
+    return result</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="knapsack" data-category="dp">
+                        <div class="card-header">
+                            <h3>Knapsack Problem</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Dynamic Programming</span>
+                            <p>Selects items with maximum value within weight limit.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">function knapsack(weights, values, capacity):
+    n = length(weights)
+    create DP table of size (n+1) x (capacity+1)
+    
+    for i from 0 to n:
+        for w from 0 to capacity:
+            if i==0 or w==0:
+                DP[i][w] = 0
+            else if weights[i-1] ≤ w:
+                DP[i][w] = max(values[i-1] + DP[i-1][w-weights[i-1]], 
+                               DP[i-1][w])
+            else:
+                DP[i][w] = DP[i-1][w]
+    
+    return DP[n][capacity]</div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-card" id="floyd-warshall" data-category="graph">
+                        <div class="card-header">
+                            <h3>Floyd-Warshall</h3>
+                        </div>
+                        <div class="card-body">
+                            <span class="algorithm-type">Graph Algorithm</span>
+                            <p>Finds shortest paths between all pairs of vertices.</p>
+                            <h4>Pseudocode:</h4>
+                            <div class="pseudocode">procedure floydWarshall(graph):
+    dist = graph
+    
+    for k from 1 to V:
+        for i from 1 to V:
+            for j from 1 to V:
+                if dist[i][j] > dist[i][k] + dist[k][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+    
+    return dist</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="back-home">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="algorithms.html">All Algorithms</a></li>
+                        <li><a href="data-structures.html">Data Structures</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Algorithm Types</h3>
+                    <ul>
+                        <li><a href="algorithms.html#binary-search">Searching Algorithms</a></li>
+                        <li><a href="algorithms.html#bubble-sort">Sorting Algorithms</a></li>
+                        <li><a href="algorithms.html#dijkstra">Graph Algorithms</a></li>
+                        <li><a href="algorithms.html#knapsack">Dynamic Programming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Project Info</h3>
+                    <p>10 fundamental algorithms with pseudocode implementations.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Algorithms & Data Structures Project.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
