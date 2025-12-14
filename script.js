@@ -1,133 +1,110 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Navigation highlighting
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.section');
-    
-    // Tab switching
-    const tabs = document.querySelectorAll('.ds-tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Initialize tabs
-    function initializeTabs() {
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetTab = tab.getAttribute('data-tab');
-                
-                // Update active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Show target tab content
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === targetTab + '-tab') {
-                        content.classList.add('active');
-                        
-                        // Reset language to C++ when switching tabs
-                        const langButtons = content.querySelectorAll('.lang-btn');
-                        const codeContainers = content.querySelectorAll('.code-container');
-                        
-                        langButtons.forEach(btn => {
-                            btn.classList.remove('active');
-                            if (btn.getAttribute('data-lang') === 'cpp') {
-                                btn.classList.add('active');
-                            }
-                        });
-                        
-                        codeContainers.forEach(container => {
-                            if (container.id.includes('cpp')) {
-                                container.style.display = 'block';
-                            } else {
-                                container.style.display = 'none';
-                            }
-                        });
-                    }
-                });
-            });
-        });
-    }
-    
-    // Language switching
-    function initializeLanguageToggles() {
-        const langButtons = document.querySelectorAll('.lang-btn');
+const dsTabs = document.querySelectorAll('.ds-tab');
+const tabContents = document.querySelectorAll('.tab-content');
+
+dsTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetTab = tab.getAttribute('data-tab');
         
-        langButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const lang = button.getAttribute('data-lang');
-                const tabContent = button.closest('.tab-content');
-                
-                // Update active language button
-                tabContent.querySelectorAll('.lang-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                button.classList.add('active');
-                
-                // Show selected language code
-                tabContent.querySelectorAll('.code-container').forEach(container => {
-                    if (container.id.includes(lang)) {
-                        container.style.display = 'block';
-                    } else {
-                        container.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-    
-    // Scroll spy for navigation
-    function updateActiveNavLink() {
-        let scrollPosition = window.scrollY + 100;
+        dsTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === `${targetTab}-tab`) {
+                content.classList.add('active');
+                
+                const langButtons = content.querySelectorAll('.lang-btn');
+                const codeContainers = content.querySelectorAll('.code-container');
+                
+                if (langButtons.length > 0) {
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    langButtons[0].classList.add('active');
+                    
+                    codeContainers.forEach(container => {
+                        if (container.id.includes('cpp')) {
+                            container.style.display = 'block';
+                        } else {
+                            container.style.display = 'none';
+                        }
+                    });
+                }
+            }
+        });
+    });
+});
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('lang-btn')) {
+        const parentTab = e.target.closest('.tab-content');
+        const lang = e.target.getAttribute('data-lang');
+        
+        parentTab.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        e.target.classList.add('active');
+        
+        parentTab.querySelectorAll('.code-container').forEach(container => {
+            if (container.id.includes(lang)) {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
             }
         });
     }
-    
-    // Smooth scrolling for navigation links
-    function initializeSmoothScrolling() {
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
-    }
-    
-    // Initialize all functionality
-    function initialize() {
-        initializeTabs();
-        initializeLanguageToggles();
-        initializeSmoothScrolling();
-        
-        // Set up scroll listener
-        window.addEventListener('scroll', updateActiveNavLink);
-        updateActiveNavLink(); // Initial call
-    }
-    
-    // Run initialization
-    initialize();
 });
+
+const filterButtons = document.querySelectorAll('.filter-btn');
+const algorithmCards = document.querySelectorAll('.algorithm-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        algorithmCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+});
+
+if (window.location.hash) {
+    setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            element.style.animation = 'pulse 0.5s';
+            
+            setTimeout(() => {
+                element.style.animation = '';
+            }, 500);
+        }
+    }, 300);
+}
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+    }
+    
+    .algorithm-card {
+        transition: all 0.3s ease;
+    }
+`;
+document.head.appendChild(style);
