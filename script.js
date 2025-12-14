@@ -66,10 +66,8 @@ filterButtons.forEach(button => {
         algorithmCards.forEach(card => {
             if (filter === 'all' || card.getAttribute('data-category') === filter) {
                 card.style.display = 'block';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 10);
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
             } else {
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.8)';
