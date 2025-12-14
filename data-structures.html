@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures | Algorithms & Data Structures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Data Structures</h1>
+            <p>4 essential data structures with C++ and Python implementations</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="algorithms.html" class="nav-link">All Algorithms</a>
+            <a href="data-structures.html" class="nav-link active">Data Structures</a>
+            <a href="about.html" class="nav-link">About</a>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Data Structures Implementation</h2>
+                
+                <div class="ds-tabs">
+                    <button class="ds-tab active" data-tab="array">Array</button>
+                    <button class="ds-tab" data-tab="stack">Stack</button>
+                    <button class="ds-tab" data-tab="queue">Queue</button>
+                    <button class="ds-tab" data-tab="tree">Tree</button>
+                </div>
+                
+                <div class="tab-content active" id="array-tab">
+                    <h3>Array Implementation</h3>
+                    <p>Arrays are collections of elements identified by index or key.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="array-cpp">
+#include <iostream>
+using namespace std;
+
+class Array {
+private:
+    int *arr;
+    int capacity;
+    int size;
+    
+public:
+    Array(int cap) {
+        capacity = cap;
+        size = 0;
+        arr = new int[capacity];
+    }
+    
+    ~Array() {
+        delete[] arr;
+    }
+    
+    bool insert(int index, int value) {
+        if (size >= capacity) {
+            cout << "Array is full!" << endl;
+            return false;
+        }
+        if (index < 0 || index > size) {
+            cout << "Invalid index!" << endl;
+            return false;
+        }
+        
+        for (int i = size; i > index; i--) {
+            arr[i] = arr[i-1];
+        }
+        
+        arr[index] = value;
+        size++;
+        return true;
+    }
+    
+    bool remove(int index) {
+        if (index < 0 || index >= size) {
+            cout << "Invalid index!" << endl;
+            return false;
+        }
+        
+        for (int i = index; i < size-1; i++) {
+            arr[i] = arr[i+1];
+        }
+        
+        size--;
+        return true;
+    }
+    
+    int get(int index) {
+        if (index < 0 || index >= size) {
+            cout << "Invalid index!" << endl;
+            return -1;
+        }
+        return arr[index];
+    }
+    
+    bool update(int index, int value) {
+        if (index < 0 || index >= size) {
+            cout << "Invalid index!" << endl;
+            return false;
+        }
+        arr[index] = value;
+        return true;
+    }
+    
+    int getSize() {
+        return size;
+    }
+    
+    bool isEmpty() {
+        return size == 0;
+    }
+    
+    void display() {
+        if (isEmpty()) {
+            cout << "Array is empty!" << endl;
+            return;
+        }
+        
+        cout << "Array elements: ";
+        for (int i = 0; i < size; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    Array myArray(10);
+    
+    myArray.insert(0, 5);
+    myArray.insert(1, 10);
+    myArray.insert(2, 15);
+    myArray.insert(1, 7);
+    
+    myArray.display();
+    
+    cout << "Element at index 2: " << myArray.get(2) << endl;
+    
+    myArray.update(1, 12);
+    myArray.display();
+    
+    myArray.remove(0);
+    myArray.display();
+    
+    cout << "Current size: " << myArray.getSize() << endl;
+    cout << "Is empty: " << (myArray.isEmpty() ? "Yes" : "No") << endl;
+    
+    return 0;
+}</div>
+                    
+                    <div class="code-container" id="array-python" style="display: none;">
+class Array:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.size = 0
+        self.arr = [None] * capacity
+    
+    def insert(self, index, value):
+        if self.size >= self.capacity:
+            print("Array is full!")
+            return False
+        
+        if index < 0 or index > self.size:
+            print("Invalid index!")
+            return False
+        
+        for i in range(self.size, index, -1):
+            self.arr[i] = self.arr[i-1]
+        
+        self.arr[index] = value
+        self.size += 1
+        return True
+    
+    def remove(self, index):
+        if index < 0 or index >= self.size:
+            print("Invalid index!")
+            return False
+        
+        for i in range(index, self.size-1):
+            self.arr[i] = self.arr[i+1]
+        
+        self.size -= 1
+        self.arr[self.size] = None
+        return True
+    
+    def get(self, index):
+        if index < 0 or index >= self.size:
+            print("Invalid index!")
+            return None
+        return self.arr[index]
+    
+    def update(self, index, value):
+        if index < 0 or index >= self.size:
+            print("Invalid index!")
+            return False
+        
+        self.arr[index] = value
+        return True
+    
+    def get_size(self):
+        return self.size
+    
+    def is_empty(self):
+        return self.size == 0
+    
+    def display(self):
+        if self.is_empty():
+            print("Array is empty!")
+            return
+        
+        print("Array elements:", end=" ")
+        for i in range(self.size):
+            print(self.arr[i], end=" ")
+        print()
+
+if __name__ == "__main__":
+    my_array = Array(10)
+    
+    my_array.insert(0, 5)
+    my_array.insert(1, 10)
+    my_array.insert(2, 15)
+    my_array.insert(1, 7)
+    
+    my_array.display()
+    
+    print("Element at index 2:", my_array.get(2))
+    
+    my_array.update(1, 12)
+    my_array.display()
+    
+    my_array.remove(0)
+    my_array.display()
+    
+    print("Current size:", my_array.get_size())
+    print("Is empty:", "Yes" if my_array.is_empty() else "No")</div>
+                </div>
+                
+                <div class="tab-content" id="stack-tab">
+                    <h3>Stack Implementation</h3>
+                    <p>Stacks are LIFO data structures.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="stack-cpp">
+#include <iostream>
+#include <stack>
+#include <algorithm>
+using namespace std;
+
+class ExpressionConverter {
+public:
+    string infixToPostfix(string infix) {
+        stack<char> s;
+        string postfix;
+        
+        for (char c : infix) {
+            if (isalnum(c)) {
+                postfix += c;
+            } else if (c == '(') {
+                s.push(c);
+            } else if (c == ')') {
+                while (!s.empty() && s.top() != '(') {
+                    postfix += s.top();
+                    s.pop();
+                }
+                s.pop();
+            } else if (isOperator(c)) {
+                while (!s.empty() && precedence(s.top()) >= precedence(c)) {
+                    postfix += s.top();
+                    s.pop();
+                }
+                s.push(c);
+            }
+        }
+        
+        while (!s.empty()) {
+            postfix += s.top();
+            s.pop();
+        }
+        
+        return postfix;
+    }
+    
+private:
+    bool isOperator(char c) {
+        return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
+    }
+    
+    int precedence(char op) {
+        if (op == '+' || op == '-') return 1;
+        if (op == '*' || op == '/') return 2;
+        if (op == '^') return 3;
+        return 0;
+    }
+};
+
+int main() {
+    ExpressionConverter converter;
+    string infix = "a+b*(c^d-e)^(f+g*h)-i";
+    
+    cout << "Infix: " << infix << endl;
+    cout << "Postfix: " << converter.infixToPostfix(infix) << endl;
+    
+    return 0;
+}</div>
+                    
+                    <div class="code-container" id="stack-python" style="display: none;">
+class ExpressionConverter:
+    def infix_to_postfix(self, infix):
+        stack = []
+        postfix = []
+        
+        for c in infix:
+            if c.isalnum():
+                postfix.append(c)
+            elif c == '(':
+                stack.append(c)
+            elif c == ')':
+                while stack and stack[-1] != '(':
+                    postfix.append(stack.pop())
+                stack.pop()
+            elif self.is_operator(c):
+                while stack and self.precedence(stack[-1]) >= self.precedence(c):
+                    postfix.append(stack.pop())
+                stack.append(c)
+        
+        while stack:
+            postfix.append(stack.pop())
+        
+        return ''.join(postfix)
+    
+    def is_operator(self, c):
+        return c in '+-*/^'
+    
+    def precedence(self, op):
+        if op in '+-':
+            return 1
+        if op in '*/':
+            return 2
+        if op == '^':
+            return 3
+        return 0
+
+if __name__ == "__main__":
+    converter = ExpressionConverter()
+    infix = "a+b*(c^d-e)^(f+g*h)-i"
+    
+    print("Infix:", infix)
+    print("Postfix:", converter.infix_to_postfix(infix))</div>
+                </div>
+                
+                <div class="tab-content" id="queue-tab">
+                    <h3>Queue Implementation</h3>
+                    <p>Queues are FIFO data structures.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="queue-cpp">
+#include <iostream>
+using namespace std;
+
+class Queue {
+private:
+    int *arr;
+    int front;
+    int rear;
+    int capacity;
+    int size;
+    
+public:
+    Queue(int cap) {
+        capacity = cap;
+        arr = new int[capacity];
+        front = 0;
+        rear = -1;
+        size = 0;
+    }
+    
+    bool isEmpty() {
+        return size == 0;
+    }
+    
+    bool isFull() {
+        return size == capacity;
+    }
+    
+    void enqueue(int value) {
+        if (isFull()) {
+            cout << "Queue is full!" << endl;
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        arr[rear] = value;
+        size++;
+    }
+    
+    int dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        int value = arr[front];
+        front = (front + 1) % capacity;
+        size--;
+        return value;
+    }
+    
+    int peek() {
+        if (isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return -1;
+        }
+        return arr[front];
+    }
+    
+    void display() {
+        if (isEmpty()) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+        cout << "Queue elements: ";
+        for (int i = 0; i < size; i++) {
+            int index = (front + i) % capacity;
+            cout << arr[index] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    Queue q(5);
+    
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    
+    cout << "Dequeued: " << q.dequeue() << endl;
+    q.display();
+    
+    q.enqueue(40);
+    q.enqueue(50);
+    q.enqueue(60);
+    q.display();
+    
+    return 0;
+}</div>
+                    
+                    <div class="code-container" id="queue-python" style="display: none;">
+class Queue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.arr = [None] * capacity
+        self.front = 0
+        self.rear = -1
+        self.size = 0
+    
+    def is_empty(self):
+        return self.size == 0
+    
+    def is_full(self):
+        return self.size == self.capacity
+    
+    def enqueue(self, value):
+        if self.is_full():
+            print("Queue is full!")
+            return
+        
+        self.rear = (self.rear + 1) % self.capacity
+        self.arr[self.rear] = value
+        self.size += 1
+    
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return -1
+        
+        value = self.arr[self.front]
+        self.front = (self.front + 1) % self.capacity
+        self.size -= 1
+        return value
+    
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return -1
+        return self.arr[self.front]
+    
+    def display(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return
+        
+        print("Queue elements:", end=" ")
+        for i in range(self.size):
+            index = (self.front + i) % self.capacity
+            print(self.arr[index], end=" ")
+        print()
+
+if __name__ == "__main__":
+    q = Queue(5)
+    
+    q.enqueue(10)
+    q.enqueue(20)
+    q.enqueue(30)
+    q.display()
+    
+    print("Dequeued:", q.dequeue())
+    q.display()
+    
+    q.enqueue(40)
+    q.enqueue(50)
+    q.enqueue(60)
+    q.display()</div>
+                </div>
+                
+                <div class="tab-content" id="tree-tab">
+                    <h3>Tree Implementation</h3>
+                    <p>Binary tree with different traversal methods.</p>
+                    
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="cpp">C++</button>
+                        <button class="lang-btn" data-lang="python">Python</button>
+                    </div>
+                    
+                    <div class="code-container" id="tree-cpp">
+#include <iostream>
+using namespace std;
+
+class TreeNode {
+public:
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+class BinaryTree {
+private:
+    TreeNode* root;
+    
+    void inorderHelper(TreeNode* node) {
+        if (node == nullptr) return;
+        inorderHelper(node->left);
+        cout << node->data << " ";
+        inorderHelper(node->right);
+    }
+    
+    void preorderHelper(TreeNode* node) {
+        if (node == nullptr) return;
+        cout << node->data << " ";
+        preorderHelper(node->left);
+        preorderHelper(node->right);
+    }
+    
+    void postorderHelper(TreeNode* node) {
+        if (node == nullptr) return;
+        postorderHelper(node->left);
+        postorderHelper(node->right);
+        cout << node->data << " ";
+    }
+    
+public:
+    BinaryTree() {
+        root = nullptr;
+    }
+    
+    void insert(int value) {
+        TreeNode* newNode = new TreeNode(value);
+        
+        if (root == nullptr) {
+            root = newNode;
+            return;
+        }
+        
+        if (root->left == nullptr) {
+            root->left = newNode;
+        } else if (root->right == nullptr) {
+            root->right = newNode;
+        } else if (root->left->left == nullptr) {
+            root->left->left = newNode;
+        } else if (root->left->right == nullptr) {
+            root->left->right = newNode;
+        }
+    }
+    
+    void inorderTraversal() {
+        cout << "Inorder Traversal: ";
+        inorderHelper(root);
+        cout << endl;
+    }
+    
+    void preorderTraversal() {
+        cout << "Preorder Traversal: ";
+        preorderHelper(root);
+        cout << endl;
+    }
+    
+    void postorderTraversal() {
+        cout << "Postorder Traversal: ";
+        postorderHelper(root);
+        cout << endl;
+    }
+};
+
+int main() {
+    BinaryTree tree;
+    
+    tree.insert(1);
+    tree.insert(2);
+    tree.insert(3);
+    tree.insert(4);
+    tree.insert(5);
+    
+    tree.inorderTraversal();
+    tree.preorderTraversal();
+    tree.postorderTraversal();
+    
+    return 0;
+}</div>
+                    
+                    <div class="code-container" id="tree-python" style="display: none;">
+class TreeNode:
+    def __init__(self, value):
+        self.data = value
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, value):
+        new_node = TreeNode(value)
+        
+        if self.root is None:
+            self.root = new_node
+            return
+        
+        if self.root.left is None:
+            self.root.left = new_node
+        elif self.root.right is None:
+            self.root.right = new_node
+        elif self.root.left.left is None:
+            self.root.left.left = new_node
+        elif self.root.left.right is None:
+            self.root.left.right = new_node
+    
+    def inorder_helper(self, node):
+        if node is None:
+            return
+        self.inorder_helper(node.left)
+        print(node.data, end=" ")
+        self.inorder_helper(node.right)
+    
+    def preorder_helper(self, node):
+        if node is None:
+            return
+        print(node.data, end=" ")
+        self.preorder_helper(node.left)
+        self.preorder_helper(node.right)
+    
+    def postorder_helper(self, node):
+        if node is None:
+            return
+        self.postorder_helper(node.left)
+        self.postorder_helper(node.right)
+        print(node.data, end=" ")
+    
+    def inorder_traversal(self):
+        print("Inorder Traversal:", end=" ")
+        self.inorder_helper(self.root)
+        print()
+    
+    def preorder_traversal(self):
+        print("Preorder Traversal:", end=" ")
+        self.preorder_helper(self.root)
+        print()
+    
+    def postorder_traversal(self):
+        print("Postorder Traversal:", end=" ")
+        self.postorder_helper(self.root)
+        print()
+
+if __name__ == "__main__":
+    tree = BinaryTree()
+    
+    tree.insert(1)
+    tree.insert(2)
+    tree.insert(3)
+    tree.insert(4)
+    tree.insert(5)
+    
+    tree.inorder_traversal()
+    tree.preorder_traversal()
+    tree.postorder_traversal()</div>
+                </div>
+                
+                <div class="back-home">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="algorithms.html">All Algorithms</a></li>
+                        <li><a href="data-structures.html">Data Structures</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Data Structures</h3>
+                    <ul>
+                        <li><a href="data-structures.html#array-tab">Array</a></li>
+                        <li><a href="data-structures.html#stack-tab">Stack</a></li>
+                        <li><a href="data-structures.html#queue-tab">Queue</a></li>
+                        <li><a href="data-structures.html#tree-tab">Tree</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> C++</li>
+                        <li><i class="fab fa-python"></i> Python</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Algorithms & Data Structures Project.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
