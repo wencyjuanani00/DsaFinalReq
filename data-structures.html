@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Structures | Data Structure and Algorithm</title>
+    <title>Data Structures | Algorithms & Data Structures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -36,6 +36,7 @@
                     <button class="ds-tab" data-tab="tree">Tree</button>
                 </div>
                 
+                <!-- Array Tab -->
                 <div class="tab-content active" id="array-tab">
                     <h3>Array Implementation</h3>
                     <p>Arrays are collections of elements identified by index or key.</p>
@@ -247,8 +248,12 @@ if __name__ == "__main__":
     
     print("Current size:", my_array.get_size())
     print("Is empty:", "Yes" if my_array.is_empty() else "No")</div>
+                    
+                    <button class="run-btn" onclick="runExample('array')">Run</button>
+                    <pre class="output-box" id="array-output"></pre>
                 </div>
                 
+                <!-- Stack Tab -->
                 <div class="tab-content" id="stack-tab">
                     <h3>Stack Implementation</h3>
                     <p>Stacks are LIFO data structures.</p>
@@ -364,8 +369,12 @@ if __name__ == "__main__":
     
     print("Infix:", infix)
     print("Postfix:", converter.infix_to_postfix(infix))</div>
+                    
+                    <button class="run-btn" onclick="runExample('stack')">Run</button>
+                    <pre class="output-box" id="stack-output"></pre>
                 </div>
                 
+                <!-- Queue Tab -->
                 <div class="tab-content" id="queue-tab">
                     <h3>Queue Implementation</h3>
                     <p>Queues are FIFO data structures.</p>
@@ -532,8 +541,12 @@ if __name__ == "__main__":
     q.enqueue(50)
     q.enqueue(60)
     q.display()</div>
+                    
+                    <button class="run-btn" onclick="runExample('queue')">Run</button>
+                    <pre class="output-box" id="queue-output"></pre>
                 </div>
                 
+                <!-- Tree Tab -->
                 <div class="tab-content" id="tree-tab">
                     <h3>Tree Implementation</h3>
                     <p>Binary tree with different traversal methods.</p>
@@ -654,10 +667,9 @@ class TreeNode:
 class BinaryTree:
     def __init__(self):
         self.root = None
-    
+
     def insert(self, value):
         new_node = TreeNode(value)
-        
         if self.root is None:
             self.root = new_node
             return
@@ -670,46 +682,45 @@ class BinaryTree:
             self.root.left.left = new_node
         elif self.root.left.right is None:
             self.root.left.right = new_node
-    
-    def inorder_helper(self, node):
-        if node is None:
-            return
-        self.inorder_helper(node.left)
-        print(node.data, end=" ")
-        self.inorder_helper(node.right)
-    
-    def preorder_helper(self, node):
-        if node is None:
-            return
-        print(node.data, end=" ")
-        self.preorder_helper(node.left)
-        self.preorder_helper(node.right)
-    
-    def postorder_helper(self, node):
-        if node is None:
-            return
-        self.postorder_helper(node.left)
-        self.postorder_helper(node.right)
-        print(node.data, end=" ")
-    
+
     def inorder_traversal(self):
         print("Inorder Traversal:", end=" ")
-        self.inorder_helper(self.root)
+        self._inorder_helper(self.root)
         print()
-    
+
+    def _inorder_helper(self, node):
+        if node is None:
+            return
+        self._inorder_helper(node.left)
+        print(node.data, end=" ")
+        self._inorder_helper(node.right)
+
     def preorder_traversal(self):
         print("Preorder Traversal:", end=" ")
-        self.preorder_helper(self.root)
+        self._preorder_helper(self.root)
         print()
-    
+
+    def _preorder_helper(self, node):
+        if node is None:
+            return
+        print(node.data, end=" ")
+        self._preorder_helper(node.left)
+        self._preorder_helper(node.right)
+
     def postorder_traversal(self):
         print("Postorder Traversal:", end=" ")
-        self.postorder_helper(self.root)
+        self._postorder_helper(self.root)
         print()
+
+    def _postorder_helper(self, node):
+        if node is None:
+            return
+        self._postorder_helper(node.left)
+        self._postorder_helper(node.right)
+        print(node.data, end=" ")
 
 if __name__ == "__main__":
     tree = BinaryTree()
-    
     tree.insert(1)
     tree.insert(2)
     tree.insert(3)
@@ -719,6 +730,9 @@ if __name__ == "__main__":
     tree.inorder_traversal()
     tree.preorder_traversal()
     tree.postorder_traversal()</div>
+                    
+                    <button class="run-btn" onclick="runExample('tree')">Run</button>
+                    <pre class="output-box" id="tree-output"></pre>
                 </div>
                 
                 <div class="back-home">
@@ -763,12 +777,11 @@ if __name__ == "__main__":
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 Data Structure and Algorithm Project.</p>
+                <p>&copy; 2025 Data Structure and Algorithms Project.</p>
             </div>
         </div>
     </footer>
     
     <script src="script.js"></script>
 </body>
-
 </html>
